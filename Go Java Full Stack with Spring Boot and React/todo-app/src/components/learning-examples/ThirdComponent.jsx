@@ -1,11 +1,11 @@
-// import React, {Component} from "react";
+import React, {Component} from "react";
 
-// export default class ThirdComponent extends Component{
-//     render(){
-//       return (
-//         <div className="thirdComponent">
-//           ThirdComponent        
-//         </div>
-//       )
-//     }
-//   }
+export default class ThirdComponent extends Component{
+    render(){
+      return (
+        <div className="thirdComponent">
+          ThirdComponent        
+        </div>
+      )
+    }
+  }
