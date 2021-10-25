@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
-import FirstComponent,{SecondComponent , ThirdComponent} from './components/learning-examples/FirstComponent';
+import FirstComponent from './components/learning-examples/FirstComponent';
+import SecondComponent from './components/learning-examples/SecondComponent';
+import ThirdComponent from './components/learning-examples/ThirdComponent';
+
 
 
 class App extends Component{
