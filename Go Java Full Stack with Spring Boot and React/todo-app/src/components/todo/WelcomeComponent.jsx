@@ -8,6 +8,11 @@ class WelcomeComponent extends Component {
                 <div class="container">
                 Welcome {this.props.match.params.name}. You can manage your todos <Link to="/todos">here</Link>
                 </div>
+                <div class="container">
+                    Click gere to get a customized welcome message
+                You can manage your todos <Link to="/todos">here</Link>
+                <button onClick={this.retrieveWelcomeMessage} className="btn btn-success">Get Welcome Message</button>
+                </div>
             </>
         ) 
         
