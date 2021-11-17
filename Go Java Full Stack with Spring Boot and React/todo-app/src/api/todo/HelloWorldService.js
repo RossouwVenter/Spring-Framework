@@ -9,6 +9,11 @@ class HelloWorldService {
         // console.log('executed service')
         axios.get('http://localhost:8080/hello-world-bean')
     }
+
+    executeHelloWorldPathVariableService(name) {
+        // console.log('executed service')
+        axios.get(`http://localhost:8080/hello-worldpath-variable/${name}`)
+    }
 }
 
 export default new HelloWorldService()

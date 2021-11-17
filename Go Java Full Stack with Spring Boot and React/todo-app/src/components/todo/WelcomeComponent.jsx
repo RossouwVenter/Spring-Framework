@@ -9,6 +9,7 @@ constructor(props){
         welcomeMessage : ''
     }
     this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
+    this.handleError = this.handleError.bind(this)
 }
 
     render() {
@@ -35,13 +36,22 @@ constructor(props){
         // .then(response => this.handleSuccessfulResponse(response))
         // .catch()
 
-        HelloWorldService.executeHelloWorldBeanService()
+        // HelloWorldService.executeHelloWorldBeanService()
+        // .then(response => this.handleSuccessfulResponse(response))
+
+        HelloWorldService.executeHelloWorldPathVariableService(this.props.match.params.name)
         .then(response => this.handleSuccessfulResponse(response))
+        .catch( error => this.handleError(error))
     }
 
     handleSuccessfulResponse(response){
         console.log(response)
-        this.setState({welcomeMessage: response.data})
+        this.setState({welcomeMessage: response.data.message})
+    }
+
+    handleError(error){
+        console.log(error)
+        this.setState({welcomeMessage: error.response.data.message})
     }
 }
 
