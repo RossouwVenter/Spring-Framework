@@ -5,6 +5,11 @@ class TodoDataService {
         // console.log('executed service')
         axios.get(`http://localhost:8080/yusers/${name}/todos`)
     }
+
+    deleteTodos(name, id) {
+        // console.log('executed service')
+        axios.delete(`http://localhost:8080/yusers/${name}/todos/${id}`)
+    }
 }
 
 export default new TodoDataService
