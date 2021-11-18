@@ -20,9 +20,15 @@ public class TodoResource {
 	private TodoHardCodedService todoService;
 	
 	@GetMapping("/users/{username}/todos")
-	public List<Todo> getAllTodos(@PathVariable String username) throws InterruptedException{
-		Thread.sleep(3000);
+	public List<Todo> getAllTodos(@PathVariable String username) {
+//		Thread.sleep(3000);
 		return todoService.findAll();
+	}
+	
+	@GetMapping("/users/{username}/todos/{id}")
+	public Todo getTodo(@PathVariable String username, @PathVariable long id) {
+//		Thread.sleep(3000);
+		return todoService.findById(id);
 	}
 	
 	@DeleteMapping("/users/{username}/todos/{id}")
