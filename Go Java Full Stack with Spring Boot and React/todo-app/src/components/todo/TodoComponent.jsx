@@ -4,6 +4,7 @@ import {Fromik, Form} from 'formik'
 import TododDataService from "../../api/todo/TododDataService";
 import AuthenticationService from "./AuthenticationService";
 import AuthenticationService from "./AuthenticationService";
+import { ToastBody } from "react-bootstrap";
 
 class TodoComponent extends Component {
 
@@ -21,7 +22,13 @@ class TodoComponent extends Component {
     }
     
     componentDidMount(){
+
+        if(this.state.id===-1){
+            return
+        }
+
         let username = AuthenticationService.getLoggedInUserName()
+
         TododDataService.retrieveTodo(username, this.state.id)
         .then(response => this.setState({
             description: response.data.description,
@@ -44,6 +51,20 @@ class TodoComponent extends Component {
         return errors;
     }
     onSubmit(values){
+        let username = AuthenticationService.getLoggedInUserName()
+
+        let todo ={
+            id: this.state.id,
+            description : values.description,
+            targetDate : values.targetDate} 
+
+        if(this.state.id===-1){
+            TododDataService.createTodo(username, todo).then(()=> this.props.history.push('/todos'))
+
+        }else {
+            TododDataService.updateTodo(username, this.state.id, todo ).then(()=> this.props.history.push('/todos'))
+        }
+
         console.log(values);
     }
 
@@ -85,8 +106,7 @@ class TodoComponent extends Component {
                     </Fromik>
                 </div>
             </div>
-        )
-        
+        )      
             
 
         return <div>Todo Component for id -{this.props.match.params.id}</div>
